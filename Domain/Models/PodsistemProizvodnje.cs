@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Domain.Utils.RandomGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace Domain.Models
             SifraPodsProiz = sifraPodsProiz;
             TipProizvodnje = tipProizvodnje;
             Lokacija = lokacija;
-            var generator = new NasumicnaKolicina();
-            PreostalaKolicinaKW = generator.Generisi(minVrednost, maxVrednost);
+            PreostalaKolicinaKW = new Generator().Generisi(minVrednost, maxVrednost);
         }
     }
 }

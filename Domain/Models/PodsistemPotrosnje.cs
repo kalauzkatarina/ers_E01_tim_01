@@ -8,13 +8,17 @@ namespace Domain.Models
 {
     public class PodsistemPotrosnje
     {
-        public List<Potrosac> potrosaci = new List<Potrosac>();
-        public string NazivPodsistema {  get; set; }
-        public string SifraPodsPotr {  get; set; }
+        // ide u repozitorijum, klasa bi imala 2 odgovornosti
+        // da modeluje potrosaca i cuva listu potrosaca
+        // rad sa potrosacima ide preko repozitorijuma
+        // i servis koji treba da radi sa potrosacima imace te metode
+        // ALI CE ZA PRISTUP ISTIM KORISTITI REPOZITORIJUM!!!
+        // public List<Potrosac> potrosaci = new List<Potrosac>();
+        public string NazivPodsistema { get; set; } = "";
+        public string SifraPodsPotr { get; set; } = "";
 
-        public PodsistemPotrosnje(List<Potrosac> potrosaci, string nazivPodsistema, string sifraPodsPotr)
+        public PodsistemPotrosnje(string nazivPodsistema, string sifraPodsPotr)
         {
-            this.potrosaci = potrosaci;
             NazivPodsistema = nazivPodsistema;
             SifraPodsPotr = sifraPodsPotr;
         }

@@ -1,15 +1,14 @@
-﻿using Domain.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Utils.RandomGen
 {
-    public class NasumicnaKolicina : INasumicnaKolicina
+    public class Generator
     {
+
         private readonly Random random = new Random();
         public double Generisi(double x, double y)
         {
@@ -22,7 +21,5 @@ namespace Domain.Models
 
             return random.NextDouble() * (y - x) + x;
         }
-
-        public NasumicnaKolicina() { }
     }
 }
