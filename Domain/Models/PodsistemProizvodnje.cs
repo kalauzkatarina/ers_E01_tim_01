@@ -22,5 +22,10 @@ namespace Domain.Models
             Lokacija = lokacija;
             PreostalaKolicinaKW = new Generator().Generisi(minVrednost, maxVrednost);
         }
+
+        public static implicit operator PodsistemProizvodnje(double v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
