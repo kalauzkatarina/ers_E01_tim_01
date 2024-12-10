@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    public interface IServisProizvodnje
+    public interface IServisPotrosnje
     {
-
+        public void EvidentirajPotrosnju(Guid id, double kolicinaKW);
     }
 }
