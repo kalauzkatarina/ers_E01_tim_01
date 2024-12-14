@@ -18,5 +18,18 @@ namespace Domain.Repositories.ProizvodnjeRepositories
         {
             return podsistemiProizvodnje;
         }
+
+        //pronadji po sifri proizvodnju
+        public PodsistemProizvodnje PronadjiPodsistem(string sifra)
+        {
+            foreach(var p in podsistemiProizvodnje)
+            {
+                if(p.SifraPodsProiz == sifra)
+                {
+                    return p;
+                }
+            }
+            return new PodsistemProizvodnje();
+        }
     };
 }

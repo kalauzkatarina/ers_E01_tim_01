@@ -40,11 +40,7 @@ namespace Domain.Repositories.PotrosaciRepositories
                 if (p.Id == id)
                     return p;
             }
-            return new Potrosac(); //ovde ne znam da li je validno da vraca prazan potrosac
-            //ili treba da vraca null, ali ako se dobro secam to smo komentarisali na vezbama da ne vraca null
-            //ili da se u potrosacu dodaje kod praznog konstruktora da kreira
-            //da je ukupna potrosnja = 0, trenutnoZaduzenje = 0, a za ime da je prazan string
-            //ili nesto slicno, sad su ove nase ideje samo ne znamo koje je najbolje resenje u ovom slucaju
+            return new Potrosac(); 
         }
 
         public IEnumerable<Potrosac> SviPotrosaci()

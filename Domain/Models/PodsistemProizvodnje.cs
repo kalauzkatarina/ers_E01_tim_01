@@ -23,9 +23,8 @@ namespace Domain.Models
             PreostalaKolicinaKW = new Generator().Generisi(minVrednost, maxVrednost);
         }
 
-        public static implicit operator PodsistemProizvodnje(double v)
+        public PodsistemProizvodnje()
         {
-            throw new NotImplementedException();
         }
     }
 }

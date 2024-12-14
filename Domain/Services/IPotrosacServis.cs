@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    public interface IServisProizvodnje
+    public interface IPotrosacServis
     {
-        public bool ObradiZahtev(double kolicinaEnergije, string nacinSnabdevanja);
-        
+        public double PregledTrenutnogZaduzenja(Guid id);
     }
 }
