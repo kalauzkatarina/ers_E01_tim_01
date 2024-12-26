@@ -1,47 +1,62 @@
-﻿using Domain.Models;
-using Domain.Repositories.EvidencijeRepositories;
+﻿using Domain.Enums;
+using Domain.Models;
 using Domain.Repositories.PotrosaciRepositories;
 using Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.ServisiPotrosnje
 {
     public class PotrosnjaServis : IPotrosnjaServis
     {
         private IPotrosaciRepository potrosacRepository = new PotrosaciRepository();
-       
+        private readonly IProizvodnjaServis iproizvodnja;
+        private readonly IEvidencijaServis garantovanaEvidencija;
+        private readonly IEvidencijaServis komercijalnaEvidencija;
+
+        public PotrosnjaServis(IProizvodnjaServis iproizvodnja, IEvidencijaServis garantovano, IEvidencijaServis komercijalno) 
+        {
+            this.iproizvodnja = iproizvodnja;
+            this.garantovanaEvidencija = garantovano;
+            this.komercijalnaEvidencija = komercijalno;
+        }
 
         public bool EvidentirajPotrosnju(Guid id, double kolicinaKW)
         {
-            Potrosac potrosac = potrosacRepository.PronadjiPotrosac(id);
-            if (potrosac == null)
+            double cena;
+            Potrosac p = potrosacRepository.PronadjiPotrosac(id);
+
+            if(p.Ime == "")
             {
                 return false;
             }
 
-            double cena;
+            string zapis = $"{DateTime.Now:dd.MM.yyyy HH:mm}: Izdato je {kolicinaKW} kW.";
 
-            if (potrosac.NacinSnabdevanja.Equals("GARANTOVANO"))
+
+            if (p.NacinSnabdevanja == TipSnabdevanja.GARANTOVANO)
             {
                 cena = 22.72;
-
-            }
-            else if (potrosac.NacinSnabdevanja.Equals("KOMERCIJALNO"))
-            {
-                cena = 43.02;
-            }
-            else
-            {
+                if (iproizvodnja.ObradiZahtev(kolicinaKW))
+                {
+                    double ukupnaCena = kolicinaKW * cena;
+                    p.TrenutnoZaduzenje += ukupnaCena;
+                    garantovanaEvidencija.EvidentirajIsporuku(zapis);
+                    return true;
+                }
                 return false;
             }
-            double ukupnaCena = kolicinaKW * cena;
-            potrosac.TrenutnoZaduzenje += ukupnaCena;
-            return true;
+            else if (p.NacinSnabdevanja == TipSnabdevanja.KOMERCIJALNO)
+            {
+                cena = 43.02;
+                if (iproizvodnja.ObradiZahtev(kolicinaKW))
+                {
+                    double ukupnaCena = kolicinaKW * cena;
+                    p.TrenutnoZaduzenje += ukupnaCena;
+                    komercijalnaEvidencija.EvidentirajIsporuku(zapis);
+                    return true;
+                }   
+                return false;
+            }
+            return false;
         }
     }
 }

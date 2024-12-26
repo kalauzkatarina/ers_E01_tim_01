@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.CompilerServices;
 
 namespace Domain.Models
 {
@@ -24,5 +20,11 @@ namespace Domain.Models
         }
 
         public PodsistemPotrosnje() { }
+
+        public override string? ToString()
+        {
+            string s = NazivPodsistema + " " + SifraPodsPotr;
+            return s;
+        }
     }
 }

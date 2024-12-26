@@ -1,79 +1,46 @@
 ﻿using Domain.Models;
 using Domain.Repositories.ProizvodnjeRepositories;
 using Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Utils.IzaberiPodsistemIDopuniEnergiju;
 
 namespace Services.ProizvodnjaServisi
 {
-    internal class KomercijalnaProizvodnjaServis : IProizvodnjaServis
+    public class KomercijalnaProizvodnjaServis : IProizvodnjaServis
     {
-        private IProizvodnjeRepository proizvodnjeRepository = new ProizvodnjeRepository();
+        private readonly IzaberiPodsistemIDopuniEnergiju utility;
 
-        public bool DopuniEnergiju(string sifra)
+        public KomercijalnaProizvodnjaServis()
         {
-            var podsistemi = proizvodnjeRepository.SviPodsistemiProizvodnje();
-
-            if (podsistemi != null)
-            {
-                return false;
-            }
-            else
-            {
-                foreach (var p in podsistemi) //PITANJE: ne znam zasto mi zeleni ovo podsistemi
-                {
-                    if (p.PreostalaKolicinaKW < 100)
-                    {
-                        p.PreostalaKolicinaKW *= 1.14; //povecanje preostale kolicine za 14%
-                        return true;
-                    }
-                }
-                return false;
-            }
-
+            utility = new IzaberiPodsistemIDopuniEnergiju();
         }
-        public PodsistemProizvodnje IzaberiNajboljiPodsistem(double kolicinaKW)
-        {
-            PodsistemProizvodnje najboljiPodsistem = new PodsistemProizvodnje();
-            var proizvodniPodsistemi = proizvodnjeRepository.SviPodsistemiProizvodnje();
-
-
-            foreach (var p in proizvodniPodsistemi)
-            {
-                if (p.PreostalaKolicinaKW >= kolicinaKW && p.TipProizvodnje.Equals("KOMERCIJALNO")) //PITANJE: jel ovde treba dodati  p.TipProizvodnje.Equals("KOMERCIJALNO") ili ne treba?
-                {
-                    if (najboljiPodsistem == null)
-                    {
-                        najboljiPodsistem = p;
-                    }
-                    else
-                    {
-                        if (p.PreostalaKolicinaKW > najboljiPodsistem.PreostalaKolicinaKW)
-                        {
-                            najboljiPodsistem = p;
-                        }
-                    }
-                }
-            }
-            return najboljiPodsistem;
-        }
-
         public bool ObradiZahtev(double kolicinaEnergije)
         {
-            var najboljiPodsistem = IzaberiNajboljiPodsistem(kolicinaEnergije);
+            PodsistemProizvodnje najboljiPodsistem = utility.IzaberiNajboljiPodsistem(kolicinaEnergije);
 
-            if (najboljiPodsistem == null)
+            if (najboljiPodsistem.SifraPodsProiz == "")
             {
                 return false;
             }
 
-            double smanjenaKolicinaEnergije = kolicinaEnergije * 0.99; //smanjujemo za 1% zbog nesavrsenosti provodnika
-            najboljiPodsistem.PreostalaKolicinaKW -= smanjenaKolicinaEnergije;
+            if (najboljiPodsistem.PreostalaKolicinaKW < 100) //PITANJE: Da li trebam samo pozvati dopuniEnergiju, ili samo kada kod najboljeg podsistema opadne ispod 100 KW
+                                                             //Jer mislim da sve dok ima dovoljno energije da isporuci taj najbolji, on ce se birati. Nisam sigurna da li ovo treba ovako.
+            {
+                bool dopuna = utility.DopuniEnergiju(14);
 
-            return true;
+                if (dopuna == false)
+                {
+                    return false;
+                }
+            }
+
+            double smanjenaKolicinaEnergije = kolicinaEnergije * 0.99; //smanjujemo za 2% zbog nesavrsenosti provodnika
+
+            if (najboljiPodsistem.PreostalaKolicinaKW >= smanjenaKolicinaEnergije)
+            {
+                najboljiPodsistem.PreostalaKolicinaKW -= smanjenaKolicinaEnergije;
+                return true;
+            }
+            return false;
         }
     }
 }

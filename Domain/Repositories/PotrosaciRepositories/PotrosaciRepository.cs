@@ -1,31 +1,26 @@
 ﻿using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Repositories.PotrosaciRepositories
 {
     public class PotrosaciRepository : IPotrosaciRepository
     {
-        private static List<Potrosac> potrosaci = [];
+        private static readonly List<Potrosac> potrosaci = [];
 
         static PotrosaciRepository()
         {
-            // dodati ako su pottrebni inicijalni podaci
-            // npr:
-            //potrosaci = [
-            //    new Potrosac(Guid.NewGuid(), "ime", "prezime", ....),
-            //    ]
+            potrosaci =
+            [
+                new Potrosac(Guid.NewGuid(), "Julijana", "Ristic", "07BN26", Enums.TipSnabdevanja.GARANTOVANO, 55, 500),
+                new Potrosac(Guid.NewGuid(), "Katarina", "Kalauz", "08GR74", Enums.TipSnabdevanja.KOMERCIJALNO, 75, 1500)
+            ];
         }
 
         public bool DodajPotrosaca(Potrosac potrosac)
         {
-            foreach(Potrosac p in potrosaci)
+            foreach (Potrosac p in potrosaci)
             {
                 // Id i Broj ugovora moraju biti jedinstveni
-                if(p.Id == potrosac.Id || p.BrPotrosackogUgovora == potrosac.BrPotrosackogUgovora)
+                if (p.Id == potrosac.Id || p.BrPotrosackogUgovora == potrosac.BrPotrosackogUgovora)
                     return false;
             }
 
@@ -35,12 +30,12 @@ namespace Domain.Repositories.PotrosaciRepositories
 
         public Potrosac PronadjiPotrosac(Guid id)
         {
-            foreach(var p in potrosaci)
+            foreach (var p in potrosaci)
             {
                 if (p.Id == id)
                     return p;
             }
-            return new Potrosac(); 
+            return new Potrosac();
         }
 
         public IEnumerable<Potrosac> SviPotrosaci()

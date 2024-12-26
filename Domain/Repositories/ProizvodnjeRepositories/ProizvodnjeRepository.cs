@@ -1,9 +1,4 @@
 ﻿using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Repositories.ProizvodnjeRepositories
 {
@@ -11,8 +6,12 @@ namespace Domain.Repositories.ProizvodnjeRepositories
     {
         private static List<PodsistemProizvodnje> podsistemiProizvodnje = new List<PodsistemProizvodnje>
         {
-            new PodsistemProizvodnje("PP001", Enums.TipProizvodnje.HIDROELEKTRANA, "Đerdap", 1000.00, 2000.00),
-            new PodsistemProizvodnje("PP002", Enums.TipProizvodnje.ECOGREEN, "Kovin", 500.00, 1500.00)
+            new PodsistemProizvodnje("PP001", Enums.TipProizvodnje.HIDROELEKTRANA, "Đerdap", 50.00, 90.00),
+            new PodsistemProizvodnje("PP002", Enums.TipProizvodnje.ECOGREEN, "Kovin", 500.00, 1500.00),
+            new PodsistemProizvodnje("PP003", Enums.TipProizvodnje.CVRSTO_GORIVO, "Obrenovac", 400.00, 1000.00),
+            new PodsistemProizvodnje("PP004", Enums.TipProizvodnje.HIDROELEKTRANA, "Bajina Bašta", 2000.00, 5000.00),
+            new PodsistemProizvodnje("PP005", Enums.TipProizvodnje.ECOGREEN, "Subotica", 1200.00, 1800.00),
+            new PodsistemProizvodnje("PP006", Enums.TipProizvodnje.CVRSTO_GORIVO, "Niš", 900.00, 2000.00)
         };
         public IEnumerable<PodsistemProizvodnje> SviPodsistemiProizvodnje()
         {
@@ -22,9 +21,9 @@ namespace Domain.Repositories.ProizvodnjeRepositories
         //pronadji po sifri proizvodnju
         public PodsistemProizvodnje PronadjiPodsistem(string sifra)
         {
-            foreach(var p in podsistemiProizvodnje)
+            foreach (var p in podsistemiProizvodnje)
             {
-                if(p.SifraPodsProiz == sifra)
+                if (p.SifraPodsProiz == sifra)
                 {
                     return p;
                 }
