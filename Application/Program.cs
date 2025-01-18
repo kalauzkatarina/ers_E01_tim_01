@@ -9,7 +9,6 @@ using Services.EvidencijaServisi;
 using Services.PotrosacServisi;
 using Services.ServisiPotrosnje;
 using Services.ServisiProizvodnje;
-using System.Buffers;
 
 namespace Application
 {
@@ -45,7 +44,7 @@ namespace Application
             }
             bool uspesno = i.DopuniEnergiju(22);
             Console.WriteLine(uspesno);
-            foreach(var item in lista_podsistem)
+            foreach (var item in lista_podsistem)
             {
                 Console.WriteLine(item.ToString());
             }

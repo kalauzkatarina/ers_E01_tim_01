@@ -15,20 +15,20 @@ namespace Services.PotrosacServisi
         }
         public double PregledTrenutnogZaduzenja(Guid id)
         {
-            Potrosac potrosac = potrosacRepository.PronadjiPotrosac(id);
+            Potrosac p = potrosacRepository.PronadjiPotrosac(id);
 
-            if (potrosac == null)
+            if (p.Ime == "")
             {
                 return 0.0;
             }
-            return potrosac.TrenutnoZaduzenje;
+            return p.TrenutnoZaduzenje;
         }
 
         public bool PotrosacZahtev(Guid id, double kolicinaKW)
         {
             Potrosac p = potrosacRepository.PronadjiPotrosac(id);
 
-            if(p.Ime == "")
+            if (p.Ime == "")
             {
                 return false;
             }

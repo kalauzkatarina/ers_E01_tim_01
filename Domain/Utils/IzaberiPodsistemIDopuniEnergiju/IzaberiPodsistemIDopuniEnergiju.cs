@@ -1,11 +1,5 @@
-﻿using Domain.Enums;
-using Domain.Models;
+﻿using Domain.Models;
 using Domain.Repositories.ProizvodnjeRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Utils.IzaberiPodsistemIDopuniEnergiju
 {
@@ -25,7 +19,7 @@ namespace Domain.Utils.IzaberiPodsistemIDopuniEnergiju
                         //npr prosledi se 22%, onda 1 + 22/100 = 1 + 0.22 = 1.22
                     }
                     return true;
-                } 
+                }
             }
             return false;
         }

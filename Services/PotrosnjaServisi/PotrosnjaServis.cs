@@ -12,7 +12,7 @@ namespace Services.ServisiPotrosnje
         private readonly IEvidencijaServis garantovanaEvidencija;
         private readonly IEvidencijaServis komercijalnaEvidencija;
 
-        public PotrosnjaServis(IProizvodnjaServis iproizvodnja, IEvidencijaServis garantovano, IEvidencijaServis komercijalno) 
+        public PotrosnjaServis(IProizvodnjaServis iproizvodnja, IEvidencijaServis garantovano, IEvidencijaServis komercijalno)
         {
             this.iproizvodnja = iproizvodnja;
             this.garantovanaEvidencija = garantovano;
@@ -24,7 +24,7 @@ namespace Services.ServisiPotrosnje
             double cena;
             Potrosac p = potrosacRepository.PronadjiPotrosac(id);
 
-            if(p.Ime == "")
+            if (p.Ime == "")
             {
                 return false;
             }
@@ -53,7 +53,7 @@ namespace Services.ServisiPotrosnje
                     p.TrenutnoZaduzenje += ukupnaCena;
                     komercijalnaEvidencija.EvidentirajIsporuku(zapis);
                     return true;
-                }   
+                }
                 return false;
             }
             return false;
