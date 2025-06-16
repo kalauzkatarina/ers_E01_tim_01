@@ -9,10 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{D24C2DCB-C320-4508-AD76-1519444E6288}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{CC51F612-D044-4129-8044-F96789C84F18}"
-	ProjectSection(ProjectDependencies) = postProject
-		{612F4363-7290-452A-8276-2B52A170F23B} = {612F4363-7290-452A-8276-2B52A170F23B}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{CC51F612-D044-4129-8044-F96789C84F18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

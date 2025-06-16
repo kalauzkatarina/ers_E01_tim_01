@@ -1,4 +1,6 @@
-﻿namespace Domain.Models
+﻿using System.Runtime.CompilerServices;
+
+namespace Domain.Models
 {
     public class PodsistemPotrosnje
     {

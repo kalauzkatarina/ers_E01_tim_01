@@ -7,6 +7,12 @@ namespace Services.AutentifikacioniServisi
     public class AutentifikacioniServis : IAutentifikacijaServis
     {
         private static readonly IPotrosaciRepository potrosaciRepository = new PotrosaciRepository();
+
+        static AutentifikacioniServis()
+        {
+            //jel trebam ovde nesto pisati?
+        }
+        
         public (bool, Potrosac) Prijava(string lozinka)
         {
             foreach (var p in potrosaciRepository.SviPotrosaci())

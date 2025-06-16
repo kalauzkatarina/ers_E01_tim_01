@@ -1,5 +1,11 @@
-﻿using Domain.Models;
+﻿using Domain.Enums;
+using Domain.Models;
 using Domain.Repositories.ProizvodnjeRepositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Domain.Utils.IzaberiPodsistemIDopuniEnergiju
 {
@@ -8,18 +14,18 @@ namespace Domain.Utils.IzaberiPodsistemIDopuniEnergiju
         private IProizvodnjeRepository proizvodnjeRepository = new ProizvodnjeRepository();
         public bool DopuniEnergiju(double procenat)
         {
-            var lista = proizvodnjeRepository.SviPodsistemiProizvodnje();
-            foreach (var podsistem in lista)
+            var listaPodsistemaProizvodnje = proizvodnjeRepository.SviPodsistemiProizvodnje();
+            foreach (var podsistem in listaPodsistemaProizvodnje)
             {
                 if (podsistem.PreostalaKolicinaKW < 100)
                 {
-                    foreach (var p in lista)
+                    foreach (var p in listaPodsistemaProizvodnje)
                     {
                         p.PreostalaKolicinaKW *= 1 + procenat / 100; //povecanje preostale kolicine za odredjeno procenat
                         //npr prosledi se 22%, onda 1 + 22/100 = 1 + 0.22 = 1.22
                     }
                     return true;
-                }
+                } 
             }
             return false;
         }

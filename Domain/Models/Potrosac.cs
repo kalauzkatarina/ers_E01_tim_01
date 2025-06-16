@@ -36,7 +36,7 @@ namespace Domain.Models
                     break;
 
                 case TipSnabdevanja.KOMERCIJALNO:
-                    s += "KOMRECIJALNO" + " ";
+                    s += "KOMERCIJALNO" + " ";
                     break;
             }
 
