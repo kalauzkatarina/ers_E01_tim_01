@@ -17,7 +17,7 @@ namespace Services.PotrosacServisi
         {
             Potrosac potrosac = potrosacRepository.PronadjiPotrosac(id);
 
-            if (potrosac.Ime == "")
+            if (potrosac.ImeIPrezime == "")
             {
                 return 0.0;
             }
@@ -28,7 +28,7 @@ namespace Services.PotrosacServisi
         {
             Potrosac p = potrosacRepository.PronadjiPotrosac(id);
 
-            if(p.Ime == "")
+            if(p.ImeIPrezime == "")
             {
                 return false;
             }

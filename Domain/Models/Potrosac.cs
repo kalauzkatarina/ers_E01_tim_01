@@ -4,19 +4,17 @@ namespace Domain.Models
 {
     public class Potrosac
     {
-        public Guid Id { get; set; }
-        public string Ime { get; set; } = "";
-        public string Prezime { get; set; }
-        public string BrPotrosackogUgovora { get; set; }
+        public Guid Id { get; set; } = Guid.Empty;
+        public string ImeIPrezime { get; set; } = "";
+        public string BrPotrosackogUgovora { get; set; } = "";
         public TipSnabdevanja NacinSnabdevanja { get; set; }
         public double UkupnaPotrosnjaEnergije { get; set; }
         public double TrenutnoZaduzenje { get; set; }
 
-        public Potrosac(Guid id, string ime, string prezime, string brPotrosackogUgovora, TipSnabdevanja nacinSnabdevanja, double ukupnaPotrosnjaEnergije, double trenutnoZaduzenje)
+        public Potrosac(string imeIPrezime, string brPotrosackogUgovora, TipSnabdevanja nacinSnabdevanja, double ukupnaPotrosnjaEnergije, double trenutnoZaduzenje)
         {
-            Id = id;
-            Ime = ime;
-            Prezime = prezime;
+            Id = Guid.NewGuid();
+            ImeIPrezime = imeIPrezime;
             BrPotrosackogUgovora = brPotrosackogUgovora;
             NacinSnabdevanja = nacinSnabdevanja;
             UkupnaPotrosnjaEnergije = ukupnaPotrosnjaEnergije;
@@ -27,7 +25,7 @@ namespace Domain.Models
 
         public override string ToString()
         {
-            string s = Id + " " + Ime + " " + Prezime + " " + BrPotrosackogUgovora + " ";
+            string s = Id + " " + ImeIPrezime + " " + BrPotrosackogUgovora + " ";
 
             switch (NacinSnabdevanja)
             {

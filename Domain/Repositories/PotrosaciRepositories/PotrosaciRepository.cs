@@ -10,8 +10,8 @@ namespace Domain.Repositories.PotrosaciRepositories
         {
             potrosaci =
             [
-                new Potrosac(Guid.NewGuid(), "Julijana", "Ristic", "07BN26", Enums.TipSnabdevanja.GARANTOVANO, 55, 500),
-                new Potrosac(Guid.NewGuid(), "Katarina", "Kalauz", "08GR74", Enums.TipSnabdevanja.KOMERCIJALNO, 75, 1500)
+                new Potrosac("Julijana Ristic", "07BN26", Enums.TipSnabdevanja.GARANTOVANO, 55, 500),
+                new Potrosac("Katarina Kalauz", "08GR74", Enums.TipSnabdevanja.KOMERCIJALNO, 75, 1500)
             ];
         }
 

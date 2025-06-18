@@ -6,14 +6,14 @@ namespace Services.AutentifikacioniServisi
 {
     public class AutentifikacioniServis : IAutentifikacijaServis
     {
-        private static readonly IPotrosaciRepository potrosaciRepository = new PotrosaciRepository();
+        private static readonly IPotrosaciRepository potrosaciRepository;
 
         static AutentifikacioniServis()
         {
-            //jel trebam ovde nesto pisati?
+            potrosaciRepository = new PotrosaciRepository();
         }
         
-        public (bool, Potrosac) Prijava(string lozinka)
+        public (bool, Potrosac) Prijava(string korisnickoIme, string lozinka)
         {
             foreach (var p in potrosaciRepository.SviPotrosaci())
             {

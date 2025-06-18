@@ -85,11 +85,8 @@ namespace Presentation.Meni
 
                             //mi cemo dodeliti neki id, jer je Guid sto random generise
 
-                            Console.WriteLine("Unesite ime potrošača: ");
-                            string ime = Console.ReadLine()?.Trim() ?? "";
-
-                            Console.WriteLine("Unesite prezime potrošača: ");
-                            string prezime = Console.ReadLine()?.Trim() ?? "";
+                            Console.WriteLine("Unesite ime i prezime potrošača: ");
+                            string imeIPrezime = Console.ReadLine()?.Trim() ?? "";
 
                             Console.WriteLine("Unesite broj potrošačkog ugovora: ");
                             string brojPotrosackogUgovora = Console.ReadLine()?.Trim() ?? "";
@@ -119,7 +116,7 @@ namespace Presentation.Meni
                             Console.WriteLine("Unesite trenutno zaduženje potrošača: ");
                             double trenutnoZaduzenje = double.Parse(Console.ReadLine()?.Trim() ?? "");
 
-                            Potrosac noviPotrosac = new Potrosac(Guid.NewGuid(), ime, prezime, brojPotrosackogUgovora, nacinSnabdevanja, ukupnaPotrosnjaEnergije, trenutnoZaduzenje);
+                            Potrosac noviPotrosac = new Potrosac(imeIPrezime, brojPotrosackogUgovora, nacinSnabdevanja, ukupnaPotrosnjaEnergije, trenutnoZaduzenje);
                             if (potrosaciRepository.DodajPotrosaca(noviPotrosac))
                             {
                                 Console.WriteLine("Novi potrošač je uspešno dodat.\n");

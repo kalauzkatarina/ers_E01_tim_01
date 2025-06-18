@@ -28,7 +28,7 @@ namespace Services.ServisiPotrosnje
             double cena;
             Potrosac p = potrosacRepository.PronadjiPotrosac(id);
 
-            if(p.Ime == "")
+            if(p.ImeIPrezime == "")
             {
                 return false;
             }

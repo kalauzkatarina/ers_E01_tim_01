@@ -1,0 +1,7 @@
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_Tests
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.csproj.AssemblyReference.cache
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.AssemblyInfoInputs.cache
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.AssemblyInfo.cs
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.csproj.CoreCompileInputs.cache
+C:\Users\KorisniK\Documents\GitHub\ers_E01_tim_01\Tests\obj\Debug\net8.0\Tests.sourcelink.json

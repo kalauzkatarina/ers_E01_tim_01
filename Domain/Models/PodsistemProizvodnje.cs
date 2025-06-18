@@ -29,15 +29,15 @@ namespace Domain.Models
             switch (TipProizvodnje)
             {
                 case TipProizvodnje.ECOGREEN:
-                    s += "ECOGREEN" + " ";
+                    s += "ECOGREEN ";
                     break;
 
                 case TipProizvodnje.CVRSTO_GORIVO:
-                    s += "CVRSTO_GORIVO" + " ";
+                    s += "CVRSTO_GORIVO ";
                     break;
 
                 case TipProizvodnje.HIDROELEKTRANA:
-                    s += "HIDROELEKTRANA" + " ";
+                    s += "HIDROELEKTRANA ";
                     break;
             }
             s += Lokacija + " " + PreostalaKolicinaKW;
