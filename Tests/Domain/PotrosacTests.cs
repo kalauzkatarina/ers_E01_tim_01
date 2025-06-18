@@ -24,8 +24,8 @@ namespace Tests.Domain
         }
 
         [Test]
-        [TestCase("Julijana", "Ristic", "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 100, -13.6)]
-        [TestCase("Katarina", "Kalauz", "EPS5678K", TipSnabdevanja.GARANTOVANO, 120, 120.5)]
+        [TestCase("Julijana Ristic", "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 100, -13.6)]
+        [TestCase("Katarina Kalauz", "EPS5678K", TipSnabdevanja.GARANTOVANO, 120, 120.5)]
         public void PotrosacKonstruktorProvereProperty_SaValidnimPodacima_Ok(string imeIPrezime, string brUgovora, TipSnabdevanja tipSn, int ukPotrosnja, double trDug)
         {
             Potrosac potrosac = new(imeIPrezime, brUgovora, tipSn, ukPotrosnja, trDug);
@@ -51,15 +51,15 @@ namespace Tests.Domain
         }
 
         [Test]
-        [TestCase("Julijana", "Ristic", "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 0, -13.6)]
-        [TestCase("Katarina", "Kalauz", "EPS5678K", TipSnabdevanja.GARANTOVANO, 0, 120.5)]
+        [TestCase("Julijana Ristic", "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 0, -13.6)]
+        [TestCase("Katarina Kalauz", "EPS5678K", TipSnabdevanja.GARANTOVANO, 0, 120.5)] //testira se za ukupnu potrosnju, jer je to minimalno 0
         public void PotrosacKonstruktor_GranicniParametri_Ok(string imeIPrezime, string brUgovora, TipSnabdevanja tipSn, double ukPotrosnja, double trDug)
         {
             Potrosac potrosac = new(imeIPrezime, brUgovora, tipSn, ukPotrosnja, trDug);
 
             Assert.That(potrosac, Is.Not.Null);
             Assert.That(potrosac.ImeIPrezime, Is.EqualTo(imeIPrezime));
-            Assert.That(potrosac.BrPotrosackogUgovora, Is.EqualTo(brUgovora));
+            Assert.That(potrosac._brPotrosackogUgovora, Is.EqualTo(brUgovora));
             Assert.That(potrosac.NacinSnabdevanja, Is.EqualTo(tipSn));
             Assert.That(potrosac.UkupnaPotrosnjaEnergije, Is.EqualTo(ukPotrosnja));
             Assert.That(potrosac.TrenutnoZaduzenje, Is.EqualTo(trDug));
@@ -67,7 +67,7 @@ namespace Tests.Domain
         }
 
         [Test]
-        [TestCase("Mira", "Miric", "EPS0000M", TipSnabdevanja.GARANTOVANO, -100, -20.5)]
+        [TestCase("Mira Miric", "EPS0000M", TipSnabdevanja.GARANTOVANO, -100, -20.5)] //ukupna potrosnja je negativna
         public void PotrosacKonstruktor_NegativniParametri_Izuzetak(string imeIPrezime, string brUgovora, TipSnabdevanja tipSn, double ukPotrosnja, double trDug)
         {
             Assert.Throws<ArgumentException>(() =>
@@ -77,8 +77,8 @@ namespace Tests.Domain
         }
 
         [Test]
-        [TestCase(null, "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 100, -13.6)]
-        [TestCase("Katarina Kalauz", null, "EPS5678K", TipSnabdevanja.GARANTOVANO, 120, 120.5)]
+        [TestCase(null, "EPS1234R", TipSnabdevanja.KOMERCIJALNO, 100, -13.6)] //ime i prezime je null
+        [TestCase("Katarina Kalauz", null, TipSnabdevanja.GARANTOVANO, 120, 120.5)] //broj ugovora je null
         public void PotrosacKonstruktor_ParametriNull_Izuzetak(string imeIPrezime, string brUgovora, TipSnabdevanja tipSn, double ukPotrosnja, double trDug)
         {
             Assert.Throws<ArgumentNullException>(() => new Potrosac(imeIPrezime, brUgovora, tipSn, ukPotrosnja, trDug));

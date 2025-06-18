@@ -5,10 +5,45 @@ namespace Domain.Models
 {
     public class PodsistemProizvodnje
     {
-        public string SifraPodsProiz { get; set; } = "";
+        public string _sifraPodsProiz = "";
+        public string SifraPodsProiz
+        {
+            get { return _sifraPodsProiz; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Greska: sifra ne moze biti null!");
+                }
+                _sifraPodsProiz = value;
+            }
+        }
         public TipProizvodnje TipProizvodnje { get; set; }
-        public string Lokacija { get; set; } = "";
-        public double PreostalaKolicinaKW { get; set; }
+        public string _lokacija = "";
+        public string Lokacija
+        {
+            get { return _lokacija; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Greska: lokacija ne moze biti null!");
+                }
+                _lokacija = value;
+            }
+        }
+        public double _preostalaKolicinaKW;
+        public double PreostalaKolicinaKW
+        {
+            get { return _preostalaKolicinaKW; }
+            set
+            {
+                if(value < 0)
+                {
+                    throw new ArgumentException("Greska: preostala kolicina ne moze biti negativna vrednost!");
+                }
+            }
+        }
 
         public PodsistemProizvodnje(string sifraPodsProiz, TipProizvodnje tipProizvodnje, string lokacija, double minVrednost, double maxVrednost)
         {

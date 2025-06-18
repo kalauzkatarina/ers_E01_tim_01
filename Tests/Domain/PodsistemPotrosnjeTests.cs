@@ -44,7 +44,7 @@ namespace Tests.Domain
         [TestCase("Sombor", null)]
         public void PodsistemPotrosnjeKonstruktorProveraProperty_ParametriNull_Izuzetak(string naziv, string sifra)
         {
-            Assert.Throws<ArgumentNullException>(() => new PodsistemPotrosnje(naziv, sifra))
+            Assert.Throws<ArgumentNullException>(() => new PodsistemPotrosnje(naziv, sifra));
         }
 
     }

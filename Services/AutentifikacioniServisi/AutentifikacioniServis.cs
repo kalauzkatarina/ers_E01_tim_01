@@ -17,7 +17,7 @@ namespace Services.AutentifikacioniServisi
         {
             foreach (var p in potrosaciRepository.SviPotrosaci())
             {
-                if (p.BrPotrosackogUgovora == lozinka) //ili ime+prezime ili brugovora
+                if (p.ImeIPrezime.Equals(korisnickoIme) && p.BrPotrosackogUgovora.Equals(lozinka)) //ili ime+prezime ili brugovora
                 {
                     return (true, p);
                 }

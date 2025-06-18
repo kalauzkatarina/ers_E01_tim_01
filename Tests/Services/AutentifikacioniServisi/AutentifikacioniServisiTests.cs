@@ -26,10 +26,10 @@ namespace Tests.Services.AutentifikacioniServisi
 
             (bool uspesno, Potrosac prijavljeni) = autentifikacijaServis.Object.Prijava(korisnickoIme, lozinka);
 
-            Assert.That(uspesno, Is.True);
-            Assert.That(prijavljeni, Is.Not.Null);
-            Assert.That(prijavljeni.ImeIPrezime, Is.EqualTo(korisnickoIme));
-            Assert.That(prijavljeni.BrPotrosackogUgovora, Is.EqualTo((true, potrosac)));
+            Assert.That(uspesno, Is.True); //proverava da li je prijava bila uspesna
+            Assert.That(prijavljeni, Is.Not.Null); //proverava da korisnik nije null
+            Assert.That(prijavljeni.ImeIPrezime, Is.EqualTo(korisnickoIme)); //proverava jesu li podaci tacni
+            Assert.That(prijavljeni.BrPotrosackogUgovora, Is.EqualTo(lozinka));
         }
 
         [Test]
@@ -37,14 +37,14 @@ namespace Tests.Services.AutentifikacioniServisi
         public void Prijava_SANeispravnimPodacima_VracaFalse(string korisnickoIme, string lozinka)
         {
             Potrosac potrosac;
-            autentifikacijaServis.Setup(x => x.Prijava(korisnickoIme, lozinka));
+            autentifikacijaServis.Setup(x => x.Prijava(korisnickoIme, lozinka)).Returns((false, new Potrosac()));
 
             (bool uspesno, potrosac) = autentifikacijaServis.Object.Prijava(korisnickoIme, lozinka);
 
-            Assert.That(uspesno, Is.True);
+            Assert.That(uspesno, Is.False); //proverava neuspesnu prijavu
             Assert.That(potrosac, Is.Not.Null);
-            Assert.That(potrosac.ImeIPrezime, Is.EqualTo(korisnickoIme));
-            Assert.That(potrosac.BrPotrosackogUgovora, Is.EqualTo((true, potrosac)));
+            Assert.That(potrosac.ImeIPrezime, Is.Null.Or.Empty);
+            Assert.That(potrosac.BrPotrosackogUgovora, Is.Null.Or.Empty);
             Assert.That(potrosac.UkupnaPotrosnjaEnergije, Is.EqualTo(0));
             Assert.That(potrosac.TrenutnoZaduzenje, Is.EqualTo(0));
         }

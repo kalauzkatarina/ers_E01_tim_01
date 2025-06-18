@@ -19,7 +19,7 @@ namespace Tests.Domain
             Assert.That(proizvodnja.SifraPodsProiz, Is.EqualTo(sifra));
             Assert.That(proizvodnja.TipProizvodnje, Is.EqualTo(tipPr));
             Assert.That(proizvodnja.Lokacija, Is.EqualTo(lokacija));
-            Assert.That(proizvodnja.PreostalaKolicinaKW, Is.GreaterThanOrEqualTo(0))
+            Assert.That(proizvodnja.PreostalaKolicinaKW, Is.GreaterThanOrEqualTo(0));
         }
 
         [Test]

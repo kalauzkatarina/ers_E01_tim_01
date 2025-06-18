@@ -10,8 +10,32 @@ namespace Domain.Models
         // i servis koji treba da radi sa potrosacima imace te metode
         // ALI CE ZA PRISTUP ISTIM KORISTITI REPOZITORIJUM!!!
         // public List<Potrosac> potrosaci = new List<Potrosac>();
-        public string NazivPodsistema { get; set; } = "";
-        public string SifraPodsPotr { get; set; } = "";
+        public string _nazivPodsistema = "";
+        public string NazivPodsistema
+        {
+            get { return _nazivPodsistema; }
+            set
+            {
+                if(value == null)
+                {
+                    throw new ArgumentNullException("Greska: naziv podsistema ne moze biti null!");
+                }
+                _nazivPodsistema = value;
+            }
+        }
+        public string _sifraPodsPotr = "";
+        public string SifraPodsPotr
+        {
+            get { return  _sifraPodsPotr; }
+            set
+            {
+                if(value == null)
+                {
+                    throw new ArgumentNullException("Greska: sifra podsistema potrosnje ne moze biti null!");
+                }
+                _sifraPodsPotr = value;
+            }
+        }
 
         public PodsistemPotrosnje(string nazivPodsistema, string sifraPodsPotr)
         {

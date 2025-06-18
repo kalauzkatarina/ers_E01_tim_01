@@ -5,16 +5,14 @@ namespace Presentation.Autentifikacija
     public class AutentifikacijaPotrosaca
     {
         private readonly IAutentifikacijaServis autentifikacijaServis;
-        private readonly IPotrosacServis potrosacServis;
 
 
-        public AutentifikacijaPotrosaca(IAutentifikacijaServis autentifikacijaServis, IPotrosacServis potrosacServis)
+        public AutentifikacijaPotrosaca(IAutentifikacijaServis autentifikacijaServis)
         {
             this.autentifikacijaServis = autentifikacijaServis;
-            this.potrosacServis = potrosacServis;
         }
 
-        public (bool,Potrosac) TryLogin(out Potrosac potrosac)
+        public bool TryLogin(out Potrosac potrosac)
         {
             potrosac = new Potrosac();
             bool uspesnaPrijava;
@@ -41,7 +39,7 @@ namespace Presentation.Autentifikacija
             } while (!uspesnaPrijava);
 
             Console.WriteLine("Uspešno ste se prijavili.");
-            return (uspesnaPrijava, potrosac);
+            return uspesnaPrijava;
         }
     }
 }
