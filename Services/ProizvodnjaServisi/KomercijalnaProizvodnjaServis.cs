@@ -22,6 +22,11 @@ namespace Services.ProizvodnjaServisi
                 return false;
             }
 
+            if (kolicinaEnergije <= 0)
+            {
+                return false;
+            }
+
             if (najboljiPodsistem.PreostalaKolicinaKW < 100) //PITANJE: Da li trebam samo pozvati dopuniEnergiju, ili samo kada kod najboljeg podsistema opadne ispod 100 KW
                                                              //Jer mislim da sve dok ima dovoljno energije da isporuci taj najbolji, on ce se birati. Nisam sigurna da li ovo treba ovako.
             {

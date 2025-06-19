@@ -59,7 +59,7 @@ namespace Tests.Domain
 
             Assert.That(potrosac, Is.Not.Null);
             Assert.That(potrosac.ImeIPrezime, Is.EqualTo(imeIPrezime));
-            Assert.That(potrosac._brPotrosackogUgovora, Is.EqualTo(brUgovora));
+            Assert.That(potrosac.BrPotrosackogUgovora, Is.EqualTo(brUgovora));
             Assert.That(potrosac.NacinSnabdevanja, Is.EqualTo(tipSn));
             Assert.That(potrosac.UkupnaPotrosnjaEnergije, Is.EqualTo(ukPotrosnja));
             Assert.That(potrosac.TrenutnoZaduzenje, Is.EqualTo(trDug));
@@ -83,6 +83,5 @@ namespace Tests.Domain
         {
             Assert.Throws<ArgumentNullException>(() => new Potrosac(imeIPrezime, brUgovora, tipSn, ukPotrosnja, trDug));
         }
-
     }
 }

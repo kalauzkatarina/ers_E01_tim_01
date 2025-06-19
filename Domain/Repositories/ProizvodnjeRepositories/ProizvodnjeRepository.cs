@@ -11,7 +11,8 @@ namespace Domain.Repositories.ProizvodnjeRepositories
             new PodsistemProizvodnje("PP003", Enums.TipProizvodnje.CVRSTO_GORIVO, "Obrenovac", 400.00, 1000.00),
             new PodsistemProizvodnje("PP004", Enums.TipProizvodnje.HIDROELEKTRANA, "Bajina Bašta", 2000.00, 5000.00),
             new PodsistemProizvodnje("PP005", Enums.TipProizvodnje.ECOGREEN, "Subotica", 1200.00, 1800.00),
-            new PodsistemProizvodnje("PP006", Enums.TipProizvodnje.CVRSTO_GORIVO, "Niš", 900.00, 2000.00)
+            new PodsistemProizvodnje("PP006", Enums.TipProizvodnje.CVRSTO_GORIVO, "Niš", 900.00, 2000.00),
+            new PodsistemProizvodnje("PP007", Enums.TipProizvodnje.ECOGREEN, "Novi Sad", 2300.00, 5000.00)
         };
         public IEnumerable<PodsistemProizvodnje> SviPodsistemiProizvodnje()
         {

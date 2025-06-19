@@ -25,7 +25,7 @@ namespace Domain.Utils.IzaberiPodsistemIDopuniEnergiju
                         //npr prosledi se 22%, onda 1 + 22/100 = 1 + 0.22 = 1.22
                     }
                     return true;
-                } 
+                }
             }
             return false;
         }

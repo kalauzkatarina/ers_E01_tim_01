@@ -12,7 +12,7 @@ namespace Presentation.Autentifikacija
             this.autentifikacijaServis = autentifikacijaServis;
         }
 
-        public bool TryLogin(out Potrosac potrosac)
+        public (bool, Potrosac) TryLogin(out Potrosac potrosac)
         {
             potrosac = new Potrosac();
             bool uspesnaPrijava;
@@ -39,7 +39,7 @@ namespace Presentation.Autentifikacija
             } while (!uspesnaPrijava);
 
             Console.WriteLine("Uspešno ste se prijavili.");
-            return uspesnaPrijava;
+            return (uspesnaPrijava, potrosac);
         }
     }
 }

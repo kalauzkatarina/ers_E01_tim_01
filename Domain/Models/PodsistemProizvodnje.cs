@@ -42,6 +42,7 @@ namespace Domain.Models
                 {
                     throw new ArgumentException("Greska: preostala kolicina ne moze biti negativna vrednost!");
                 }
+                _preostalaKolicinaKW = value;
             }
         }
 

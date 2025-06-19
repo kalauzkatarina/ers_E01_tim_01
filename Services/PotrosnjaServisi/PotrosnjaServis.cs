@@ -33,6 +33,11 @@ namespace Services.ServisiPotrosnje
                 return false;
             }
 
+            if(kolicinaKW <= 0)
+            {
+                return false;
+            }
+
             string zapis = $"{DateTime.Now:dd.MM.yyyy HH:mm}: Izdato je {kolicinaKW} kW.";
 
 

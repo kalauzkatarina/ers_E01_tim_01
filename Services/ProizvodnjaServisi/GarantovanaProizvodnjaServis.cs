@@ -8,17 +8,21 @@ namespace Services.ServisiProizvodnje
 {
     public class GarantovanaProizvodnjaServis : IProizvodnjaServis
     {
-        private readonly IzaberiPodsistemIDopuniEnergiju utility;
 
         public GarantovanaProizvodnjaServis()
         {
-            utility = new IzaberiPodsistemIDopuniEnergiju();
         }
         public bool ObradiZahtev(double kolicinaEnergije)
         {
+            IzaberiPodsistemIDopuniEnergiju utility = new IzaberiPodsistemIDopuniEnergiju();
             PodsistemProizvodnje najboljiPodsistem = utility.IzaberiNajboljiPodsistem(kolicinaEnergije);
 
             if (najboljiPodsistem.SifraPodsProiz == "") 
+            {
+                return false;
+            }
+
+            if(kolicinaEnergije <= 0)
             {
                 return false;
             }
