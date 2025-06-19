@@ -49,7 +49,7 @@ namespace Tests.Domain
 
         [Test]
         [TestCase("PP123-VG1", TipProizvodnje.CVRSTO_GORIVO, "Visegrad", 381, 700)]
-        public void PodsistemProizvodnjeKonstruktorProveraProperty_PreostalaKolicinaIzuzetak(string sifra, TipProizvodnje tipPr, string lokacija, double min, double max)
+        public void PodsistemProizvodnjeKonstruktorProveraProperty_PreostalaKolicinaNegativna_Izuzetak(string sifra, TipProizvodnje tipPr, string lokacija, double min, double max)
         {
             double kolicina = -100;
             Assert.Throws<ArgumentException>(() => new PodsistemProizvodnje(sifra, tipPr, lokacija, min, max) { PreostalaKolicinaKW = kolicina });
@@ -57,7 +57,7 @@ namespace Tests.Domain
         [Test]
         [TestCase(null, TipProizvodnje.ECOGREEN, "Sombor", 400, 600)]
         [TestCase("PP789-SO1", TipProizvodnje.ECOGREEN, null, 400, 600)]
-        public void PodsistemProizvodnjeKonstruktorProveraProperty_ParametriIzuzetak(string sifra, TipProizvodnje tipPr, string lokacija, double min, double max)
+        public void PodsistemProizvodnjeKonstruktorProveraProperty_ParametriNull_Izuzetak(string sifra, TipProizvodnje tipPr, string lokacija, double min, double max)
         {
             Assert.Throws<ArgumentNullException>(() => new PodsistemProizvodnje(sifra, tipPr, lokacija, min, max));
         }

@@ -7,10 +7,8 @@ namespace Services.EvidencijaServisi
         private readonly string putanjaFajla = "evidencija_garantovano.txt";
         public bool EvidentirajIsporuku(string zapis)
         {
-            //PITANJE: Kako da uradim try-catch blok pravilno?
             try
             {
-                //upisivanje u fajl
                 using (StreamWriter sw = new StreamWriter(putanjaFajla, true))
                 {
                     sw.WriteLine(zapis);

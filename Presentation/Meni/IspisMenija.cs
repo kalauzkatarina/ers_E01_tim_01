@@ -44,8 +44,6 @@ namespace Presentation.Meni
                 {
                     case "1":
                         {
-                            //podnesi zahtev za dobijanje elektricne energije
-
                             double kolicinaEnergije;
                             Console.WriteLine("Unesite zahtevanu energiju: ");
                             kolicinaEnergije = double.Parse(Console.ReadLine());
@@ -72,7 +70,6 @@ namespace Presentation.Meni
 
                     case "2" :
                         {
-                            //pregled trenutnog zaduzenja
                             double trenutnoZaduzenje;
                             trenutnoZaduzenje = potrosacServis.PregledTrenutnogZaduzenja(trenutniPotrosac.Id);
                             Console.WriteLine("Trenutno zaduženje potrošača je: " + trenutnoZaduzenje);
@@ -81,10 +78,7 @@ namespace Presentation.Meni
 
                     case "3" :
                         {
-                            //unos novog potrosaca
-
-                            //mi cemo dodeliti neki id, jer je Guid sto random generise
-
+                           
                             Console.WriteLine("Unesite ime i prezime potrošača: ");
                             string imeIPrezime = Console.ReadLine()?.Trim() ?? "";
 
@@ -128,8 +122,6 @@ namespace Presentation.Meni
                         }
                     case "4":
                         {
-                            //pregled svih potrosaca
-
                             IPotrosaciRepository potrosaciRepository = new PotrosaciRepository();
                             var sviPotrosaci = potrosaciRepository.SviPotrosaci();
 

@@ -34,7 +34,7 @@ namespace Tests.Services.AutentifikacioniServisi
 
         [Test]
         [TestCase("Petar Petrovic", "EPS1111P")]
-        public void Prijava_SANeispravnimPodacima_VracaFalse(string korisnickoIme, string lozinka)
+        public void Prijava_SaNeispravnimPodacima_VracaFalse(string korisnickoIme, string lozinka)
         {
             Potrosac potrosac;
             autentifikacijaServis.Setup(x => x.Prijava(korisnickoIme, lozinka)).Returns((false, new Potrosac()));

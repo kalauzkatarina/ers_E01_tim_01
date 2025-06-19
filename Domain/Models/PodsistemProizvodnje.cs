@@ -79,9 +79,6 @@ namespace Domain.Models
             s += Lokacija + " " + PreostalaKolicinaKW;
             return s;
 
-            //string tipProizvodnje = TipProizvodnje.ToString();
-
-            //return $"{SifraPodsProiz} {tipProizvodnje} {Lokacija} {PreostalaKolicinaKW}";
         }
     }
 }

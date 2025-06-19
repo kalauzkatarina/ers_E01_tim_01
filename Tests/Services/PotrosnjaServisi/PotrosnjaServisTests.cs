@@ -45,9 +45,6 @@ namespace Tests.Services.PotrosnjaServisi
                 .GetField("potrosacRepository", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.SetValue(potrosnjaServis, potrosaciRepository.Object);
 
-            //garantovanaProizvodnjaServis.Setup(p => p.ObradiZahtev(It.IsAny<double>())).Returns(true);
-            //komercijalnaProizvodnjaServis.Setup(p => p.ObradiZahtev(It.IsAny<double>())).Returns(true);
-            //garantovanaEvidencijaServis.Setup(e => e.EvidentirajIsporuku(It.Is<Evidencija>());
         }
 
         [Test]

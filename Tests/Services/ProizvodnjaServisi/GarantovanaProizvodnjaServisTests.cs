@@ -1,16 +1,7 @@
-﻿using Domain.Enums;
-using Domain.Models;
-using Domain.Repositories.ProizvodnjeRepositories;
-using Domain.Services;
-using Domain.Utils.IzaberiPodsistemIDopuniEnergiju;
+﻿using Domain.Services;
 using Moq;
 using NUnit.Framework;
 using Services.ServisiProizvodnje;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests.Services.ProizvodnjaServisi
 {
